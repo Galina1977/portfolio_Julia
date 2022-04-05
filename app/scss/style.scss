@@ -9,6 +9,7 @@
 @import "_ui";
 
 @import "components/_header";
+@import "components/_gradient";
 
 //
 .upbtn {
@@ -23,16 +24,73 @@
    border: 3px solid #e3dcdc;
    border-radius: 50%;
    transform: scale(0);
-   transition: all 0.7s ease-in-out;
+   transition: all 0.2s ease-in-out;
    background-position: center center;
    background-repeat: no-repeat;
    background-color: #fe3e57;
    background-image: url("../images/icons/arrow-scroll.svg");
+   &:hover {
+      background-color: #000;
+   }
+   @media (max-width: 767.98px) {
+      right: 15px;
+   }
 }
-.upbtn:hover {
-   transform: scale(1.2) !important;
+
+.skills {
+   @include adaptiv-value("padding-top", 70, 20, 1);
+   @include adaptiv-value("padding-bottom", 120, 20, 1);
+   color: #2d2d2d;
+   &__inner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 45px;
+   }
+   &__header {
+      text-align: center;
+      @include adaptiv-value("margin-bottom", 50, 20, 1);
+      position: relative;
+      padding-bottom: 20px;
+      &::after {
+         content: "";
+         display: block;
+         width: 50%;
+         border-bottom: 2px solid #fe3e57;
+         position: absolute;
+         left: 50%;
+         transform: translateX(-50%);
+         bottom: 0;
+      }
+   }
+   &__title {
+      @include adaptiv-value("font-size", 38, 18, 1);
+      line-height: 38/38 * 100%;
+      @extend%roboto-700;
+      color: #fe3e57;
+      @include adaptiv-value("margin-bottom", 25, 12, 1);
+   }
+   &__subtitle {
+      @include adaptiv-value("font-size", 30, 17, 1);
+      line-height: 30/30 * 100%;
+      @extend%roboto-500;
+      color: #fe3e57;
+   }
+   &__item {
+      @include adaptiv-value("font-size", 20, 14, 1);
+      line-height: 25/20 * 100%;
+      font-weight: 600;
+      text-align: left;
+      list-style: disc;
+      &:not(:last-child) {
+         @include adaptiv-value("margin-bottom", 10, 5, 1);
+      }
+   }
+   ul.skills__menu {
+      padding: 0 20px;
+   }
 }
-// Видео 2 блок
+
 .portfolio {
    @include adaptiv-value("padding-top", 100, 33, 1);
    @include adaptiv-value("padding-bottom", 70, 30, 1);
@@ -48,7 +106,7 @@
       &::after {
          content: "";
          display: block;
-         width: 220px;
+         @include adaptiv-value("width", 220, 150, 1);
          border-bottom: 2px solid #fe3e57;
          position: absolute;
          left: 50%;
@@ -57,14 +115,14 @@
       }
    }
    &__title {
-      @include adaptiv-value("font-size", 65, 35, 1);
+      @include adaptiv-value("font-size", 65, 24, 1);
       line-height: 75/75 * 100%;
       @extend%roboto-700;
       color: #fe3e57;
       @include adaptiv-value("margin-bottom", 25, 12, 1);
    }
    &__subtitle {
-      @include adaptiv-value("font-size", 50, 26, 1);
+      @include adaptiv-value("font-size", 50, 22, 1);
       line-height: 60/57 * 100%;
       @extend%roboto-500;
       color: #fe3e57;
@@ -110,7 +168,6 @@
    }
 }
 
-//3 блок
 .abaut {
    @include adaptiv-value("padding-top", 70, 40, 1);
    @include adaptiv-value("padding-bottom", 120, 25, 1);
@@ -130,17 +187,18 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
       @include adaptiv-value("gap", 32, 15, 1);
-      @include adaptiv-value("row-gap", 60, 15, 1);
+      @include adaptiv-value("row-gap", 60, 30, 1);
    }
    blockquote {
       @include adaptiv-value("padding", 20, 10, 0);
-      @include adaptiv-value("font-size", 22, 18, 1);
+      @include adaptiv-value("font-size", 22, 16, 1);
       line-height: 32/22 * 100%;
-      @extend%roboto-700;
+      @extend%montserrat-600;
+      font-style: italic;
       color: #2d2d2d;
       border-left: 6px solid #fe3e57;
       border-right: 6px solid #fe3e57;
-      @include adaptiv-value("margin-top", 55, 30, 1);
+      @include adaptiv-value("margin-top", 95, 45, 1);
       span {
          display: block;
          text-transform: uppercase;
@@ -150,7 +208,6 @@
    }
 }
 
-//4 блок Пупап отзывы
 .certificates {
    @include adaptiv-value("padding-top", 55, 25, 1);
    @include adaptiv-value("padding-bottom", 150, 65, 1);
@@ -163,7 +220,7 @@
       @include adaptiv-value("margin-bottom", 80, 35, 1);
    }
    &__title {
-      @include adaptiv-value("font-size", 65, 35, 1);
+      @include adaptiv-value("font-size", 65, 30, 1);
       line-height: 75/75 * 100%;
       @extend%roboto-700;
       color: #000;
@@ -173,7 +230,7 @@
       &::after {
          content: "";
          display: block;
-         width: 220px;
+         @include adaptiv-value("width", 220, 110, 1);
          border-bottom: 2px solid #000;
          position: absolute;
          left: 50%;
@@ -240,8 +297,9 @@
 }
 
 .hover-image {
+   text-align: center;
    &__link {
-      @include adaptiv-value("width", 350, 270, 1);
+      @include adaptiv-value("width", 325, 230, 1);
       display: inline-block;
       position: relative;
       z-index: 1;
@@ -270,7 +328,7 @@
       }
    }
    &__img {
-      @include adaptiv-value("width", 350, 270, 1);
+      @include adaptiv-value("width", 325, 230, 1);
       position: relative;
       object-fit: cover;
       transition: opacity 0.5s;
@@ -321,8 +379,9 @@
    }
 }
 img.mfp-img {
-   // @include adaptiv-value("width", 1000, 300, 1);
-   @include adaptiv-value("height", 823, 330, 1);
+   width: 600px;
+   height: auto;
+   padding: 0 5px;
 }
 .mfp-bg {
    background: #0b0b0b;
@@ -333,7 +392,285 @@ img.mfp-img {
 .mfp-zoom-out-cur .mfp-image-holder .mfp-close {
    cursor: pointer;
 }
-//
+
+.mfp-image-holder .mfp-close,
+.mfp-iframe-holder .mfp-close {
+   color: #fff;
+   right: -80px;
+   top: -45px;
+   text-align: right;
+   padding-right: 6px;
+   width: 100%;
+}
+
+.mfp-counter {
+   position: absolute;
+   top: 0;
+   right: -75px;
+   color: #ccc;
+   font-size: 17px;
+   line-height: 20px;
+   white-space: nowrap;
+}
+
+.music {
+   @include adaptiv-value("padding-top", 120, 55, 1);
+   @include adaptiv-value("padding-bottom", 150, 75, 1);
+   background: #000;
+   &__gradient {
+      @include adaptiv-value("margin-bottom", 80, 35, 1);
+   }
+   &__inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+   }
+   &__item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @include adaptiv-value("width", 1170, 355, 1);
+      @include adaptiv-value("height", 540, 285, 1);
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      position: relative;
+      &::before {
+         content: "";
+         display: block;
+         position: absolute;
+         left: 0;
+         top: 0;
+         width: 100%;
+         height: 100%;
+         background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 18.58%, rgba(56, 56, 56, 0.75) 70%);
+         z-index: 0;
+      }
+   }
+   &__link {
+      z-index: 1;
+   }
+   &__play-img {
+      @include adaptiv-value("width", 90, 60, 1);
+      @include adaptiv-value("height", 90, 60, 1);
+      object-fit: cover;
+   }
+}
+
+.tips {
+   @include adaptiv-value("padding-top", 44, 30, 1);
+   @include adaptiv-value("padding-bottom", 44, 30, 1);
+}
+
+.slider-tips {
+   position: relative;
+   &__body {
+      @include adaptiv-value("margin-left", -30, -15, 1);
+      @include adaptiv-value("margin-right", -30, -15, 1);
+      @include adaptiv-value("padding", 30, 15, 1);
+   }
+   &__slide {
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.3s ease 0s;
+      @media (any-hover: hover) {
+         &:hover {
+            box-shadow: 0 0 32px rgba(97, 97, 97, 0.2);
+         }
+      }
+   }
+   &__image {
+      padding: 0px 0px 385/ 391 * 100% 0px;
+   }
+   &__dotts {
+      @include adaptiv-value("padding-top", 8, 0, 1);
+      justify-content: center;
+   }
+   &__arrows {
+      pointer-events: none;
+      position: absolute;
+      top: 50%;
+      transform: translate(0px, -50%);
+      width: calc(100% - 48px);
+      left: 24px;
+      z-index: 5;
+      justify-content: space-between;
+      @media (min-width: 1200px) {
+         left: -24px;
+         width: calc(100% + 48px);
+      }
+      @media (max-width: 767.98px) {
+         display: none;
+      }
+   }
+   .slider-arrow {
+      text-align: center;
+      pointer-events: auto;
+      border-radius: 50%;
+      height: 48px;
+      background-color: #fe3e57;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease 0s;
+      &_prev,
+      &_next {
+         &::before {
+            color: #fff;
+            font-size: 22px;
+         }
+      }
+      @media (any-hover: hover) {
+         &:hover {
+            background-color: #fe3e57;
+         }
+      }
+   }
+   .swiper-pagination-bullet {
+      cursor: pointer;
+      flex: 0 0 27px;
+      height: 27px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 2px 0px;
+      background: transparent;
+      &:not(:last-child) {
+         // margin-right: 12px;
+         @include adaptiv-value("margin-right", 12, 1, 1);
+      }
+      &::after {
+         content: "";
+         width: 11px;
+         height: 11px;
+         background-color: #fff;
+         border-radius: 50%;
+         transition: background-color 0.3s ease 0s;
+      }
+      &::before {
+         content: "";
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         border-radius: 50%;
+         border: 1px solid #fe3e57;
+         transition: transform 0.3s ease 0s;
+         transform: scale(0);
+      }
+   }
+   .swiper-pagination-bullet-active {
+      &::after {
+         background-color: #fe3e57;
+      }
+      &::before {
+         transform: scale(1);
+      }
+   }
+}
+
+.diploma {
+   @include adaptiv-value("padding-top", 100, 55, 1);
+   // background: #000;
+   &__inner {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
+      @include adaptiv-value("gap", 32, 22, 1);
+      @include adaptiv-value("row-gap", 60, 30, 1);
+   }
+   &__header {
+      text-align: center;
+      @include adaptiv-value("margin-bottom", 80, 35, 1);
+   }
+   &__title {
+      @include adaptiv-value("font-size", 65, 30, 1);
+      line-height: 75/75 * 100%;
+      @extend%roboto-700;
+      color: #fe3e57;
+      @include adaptiv-value("margin-bottom", 25, 12, 1);
+      position: relative;
+      padding-bottom: 10px;
+      &::after {
+         content: "";
+         display: block;
+         @include adaptiv-value("width", 220, 155, 1);
+         border-bottom: 2px solid #fe3e57;
+         position: absolute;
+         left: 50%;
+         transform: translateX(-50%);
+         bottom: 0;
+      }
+   }
+   &__address {
+      @include adaptiv-value("max-width", 780, 250, 1);
+      @include adaptiv-value("padding-top", 80, 30, 1);
+      margin: 0 auto;
+   }
+   .address {
+      font-style: normal;
+      &__item {
+         @include adaptiv-value("padding-left", 50, 38, 1);
+         position: relative;
+         margin-bottom: 35px;
+         &:last-child {
+            margin-bottom: 0;
+         }
+         &::before {
+            content: "";
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 5px;
+            left: -15px;
+         }
+         &--tel {
+            &::before {
+               content: "";
+               @include adaptiv-value("width", 40, 30, 1);
+               @include adaptiv-value("height", 40, 30, 1);
+               background-image: url("../images/icons/phone.svg");
+            }
+         }
+         &--social {
+            &::before {
+               content: "";
+               @include adaptiv-value("width", 48, 38, 1);
+               @include adaptiv-value("height", 48, 38, 1);
+               background-image: url("../images/icons/vk.svg");
+            }
+         }
+      }
+      &__text {
+         color: #fff;
+         @include adaptiv-value("font-size", 22, 18, 1);
+         line-height: 32/22 * 100%;
+         font-weight: 800;
+         margin-bottom: 5px;
+      }
+      &__tel {
+         @include adaptiv-value("font-size", 22, 18, 1);
+         line-height: 32/22 * 100%;
+         color: #fff;
+         font-weight: 500;
+      }
+      &__link {
+         display: block;
+         @include adaptiv-value("font-size", 22, 15, 1);
+         line-height: 32/22 * 100%;
+         color: #4d76a1;
+         font-weight: 600;
+         transition: color 0.3s ease 0s;
+         &:hover {
+            color: #ccc;
+         }
+         & + & {
+            margin-top: 8px;
+         }
+      }
+   }
+}
+
 @media (max-width: 768px) {
    .animate__animated {
       transition-property: none !important;
